@@ -1,0 +1,30 @@
+import RscXListBox;
+
+#include "defines.hpp"
+#include "control.hpp"
+
+
+
+class CfgFunctions
+{
+	class ER32
+	{
+		class VehicleSpawner
+		{
+			file = "scripts\functions"; //folder
+			
+			class vehicleSpawner_createDialog;
+			class vehicleSpawner_onCategoryChanged;
+			class vehicleSpawner_onSpawnpointChanged;
+			class vehicleSpawner_previewSlider;
+			class vehicleSpawner_onVehicleSelected;
+			class vehicleSpawner_cleanUpPreview;
+			class vehicleSpawner_spawnVehicle;
+			class vehicleSpawner_onAmmoChanged;
+			class vehicleSpawner_onAmmoEditChanged;
+			class vehicleSpawner_addNewCargo;
+			class vehicleSpawner_removeEntry;
+			class vehicleSpawner_updateCargoAmount;
+		};
+	};
+};
