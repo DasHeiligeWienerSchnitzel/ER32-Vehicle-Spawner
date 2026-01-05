@@ -13,11 +13,14 @@ if (!isNil "ER32_previewVehicle") then {
 };
 
 _previewLocation = [0,0,0];
-if (isNil ER32_previewLocation) then {
-	_previewLocation = [0,0,0]
-}else{
-	_previewLocation = ER32_previewLocation
+if (count ER32_previewLocations > 0) then {
+	_vehicleList_index = ER32_vehicleList findIf {(_x select 0) == _vehicleClass};
+	_previewLocationType = (ER32_vehicleList select _vehicleList_index) select 2;
+	_previewLocation = ER32_previewLocations select _previewLocationType;
+	hint format ["%1\n%2\n%3\n%4",_vehicleClass,_vehicleList_index,_previewLocationType,_previewLocation];
 };
+
+
 
 ER32_previewVehicle = createVehicleLocal [
 	_vehicleClass,
