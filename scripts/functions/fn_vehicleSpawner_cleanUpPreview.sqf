@@ -4,6 +4,7 @@ if (!isNil "ER32_previewVehicle") then {
 };
 
 if (!isNil "ER32_previewCamera") then {
+	ER32_previewCamera cameraEffect ["Terminate", "Back"];
 	camDestroy ER32_previewCamera;
 	ER32_previewCamera = nil;
 };

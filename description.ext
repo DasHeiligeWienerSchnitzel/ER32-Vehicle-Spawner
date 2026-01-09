@@ -25,6 +25,14 @@ class CfgFunctions
 			class vehicleSpawner_addNewCargo;
 			class vehicleSpawner_removeEntry;
 			class vehicleSpawner_updateCargoAmount;
+			class vehicleSpawner_initPreviewCamera;
+		};
+		class Garage
+		{
+			file = "scripts\functions"; //folder
+			
+			class garage_createDialog;
+			class garage_buildFeatureList;
 		};
 	};
 };

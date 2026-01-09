@@ -103,3 +103,17 @@ for "_i" from 0 to (_maximum_cargo - 1) do {
 	
 	[_cargo, _vehicle] call ace_cargo_fnc_loadItem;
 };
+
+//Vehicle Texture
+private _selectedTexture = missionNamespace getVariable ["ER32_selectedTextureSource", ""];
+[_vehicle, [_selectedTexture, 1]] call BIS_fnc_initVehicle;
+
+//Vehicle Animations
+private _selectedAnimations = missionNamespace getVariable ["ER32_selectedAnimationStates", createHashMap];
+
+{
+	private _src = _x;
+	private _phase = _y;
+	
+	_vehicle animateSource [_src, _phase, true];
+}forEach _selectedAnimations;

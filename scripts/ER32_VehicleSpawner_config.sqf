@@ -7,17 +7,19 @@ Type:
 */
 
 ER32_vehicleList = [
-	["B_MRAP_01_F",					"Car",		0],
-	["B_MRAP_01_gmg_F",				"Car",		0],
-	["B_MRAP_01_hmg_F",				"Car",		0],
-	["B_LSV_01_unarmed_F",			"Car",		0],
-	["B_LSV_01_AT_F",				"Car",		0],
-	["B_LSV_01_armed_F",			"Car",		0],
-	["B_Quadbike_01_F",				"Car",		0],
-	["B_APC_Wheeled_01_cannon_F",	"APC",		0],
-	["B_APC_Tracked_01_CRV_F",		"Support",	0],
-	["B_Heli_Light_01_F",			"Air",		1],
-	["B_Boat_Armed_01_minigun_F",	"Boat",		2]
+	["B_MRAP_01_F",							"Car",		0],
+	["B_MRAP_01_gmg_F",						"Car",		0],
+	["B_MRAP_01_hmg_F",						"Car",		0],
+	["B_LSV_01_unarmed_F",					"Car",		0],
+	["B_LSV_01_AT_F",						"Car",		0],
+	["B_LSV_01_armed_F",					"Car",		0],
+	["B_Quadbike_01_F",						"Car",		0],
+	["B_APC_Wheeled_01_cannon_F",			"APC",		0],
+	["B_APC_Tracked_01_CRV_F",				"Support",	0],
+	["B_Heli_Light_01_F",					"Air",		1],
+	["B_Heli_Light_01_dynamicLoadout_F",	"Air",		1],
+	["B_Heli_Attack_01_dynamicLoadout_F",	"Air",		1],
+	["B_Boat_Armed_01_minigun_F",			"Boat",		2]
 ];
 
 //[Display Name, Variable Name]

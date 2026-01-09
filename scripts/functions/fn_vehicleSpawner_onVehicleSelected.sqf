@@ -17,7 +17,7 @@ if (count ER32_previewLocations > 0) then {
 	_vehicleList_index = ER32_vehicleList findIf {(_x select 0) == _vehicleClass};
 	_previewLocationType = (ER32_vehicleList select _vehicleList_index) select 2;
 	_previewLocation = ER32_previewLocations select _previewLocationType;
-	hint format ["%1\n%2\n%3\n%4",_vehicleClass,_vehicleList_index,_previewLocationType,_previewLocation];
+	//hint format ["%1\n%2\n%3\n%4",_vehicleClass,_vehicleList_index,_previewLocationType,_previewLocation];
 };
 
 
@@ -40,9 +40,11 @@ private _bbox = boundingBoxReal ER32_previewVehicle;
 private _size = (_bbox#1#1) max (_bbox#1#0);
 private _distance = _size * 2.5;
 
+ER32_previewCamera cameraEffect ["Internal", "Back", "ER32_pip"];
 ER32_previewCamera camSetTarget ER32_previewVehicle;
 ER32_previewCamera camSetRelPos [0, _distance, _size * 0.6];
 ER32_previewCamera camCommit 0;
+
 
 
 

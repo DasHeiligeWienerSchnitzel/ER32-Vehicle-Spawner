@@ -2,19 +2,10 @@ createDialog "ER32_VehicleSpawner";
 _display = findDisplay 3200001;
 
 
-
-//Create Preview Camera
-ER32_previewCamera = "camera" camCreate [0,0,0];
-ER32_previewCamera cameraEffect ["Internal", "Back", "ER32_pip"];
-
-ER32_previewCamera camSetFov 0.5;
-ER32_previewCamera camCommit 0;
-
-
-
 //Listbox Categories
 _listbox_categories = _display displayCtrl 1501;
 lbClear _listbox_categories;
+
 
 
 _categories = [];
@@ -57,3 +48,5 @@ lbClear _dropdown_cargo;
 } forEach ER32_list;
 
 _dropdown_cargo lbSetCurSel 0;
+
+[_display displayCtrl 1500, 0] call ER32_fnc_vehicleSpawner_onVehicleSelected;

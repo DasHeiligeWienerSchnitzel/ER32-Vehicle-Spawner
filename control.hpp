@@ -1,10 +1,11 @@
 class ER32_VehicleSpawner
 {
-	idd = 3200001
+	idd = 3200001;
 	movingEnabled = 0;
 	enableSimulation = 1;
 	
-	onUnload = "call ER32_fnc_cleanUpPreview";
+	onUnload = "call ER32_fnc_vehicleSpawner_cleanUpPreview;";
+	onLoad = "call ER32_fnc_vehicleSpawner_initPreviewCamera;";
 	
 	class controls
 	{
@@ -271,12 +272,14 @@ class ER32_VehicleSpawner
 		class ER32_VehicleSpawner_Button_Garage: RscButton
 		{
 			idc = 1604;
-			text = "Garage"; //--- ToDo: Localize;
-			x = 0.62375 * safezoneW + safezoneX;
+			style = ST_PICTURE;
+			text = "\a3\ui_f\data\gui\rsc\rscdisplayarsenal\spacegarage_ca.paa";
+			x = 0.634062 * safezoneW + safezoneX;
 			y = 0.588 * safezoneH + safezoneY;
-			w = 0.0567187 * safezoneW;
+			w = 0.04125 * safezoneW;
 			h = 0.044 * safezoneH;
 			colorBackground[] = {-1,-1,-1,0.8};
+			action = "call ER32_fnc_garage_createDialog";
 		};
 		class ER32_VehicleSpawner_Button_Cargo_RemoveAll: RscButton
 		{
@@ -307,4 +310,141 @@ class ER32_VehicleSpawner
 	};
 };
 
-
+class ER32_Garage
+{
+	idd = 3200002;
+	movingEnabled = 0;
+	enableSimulation = 1;
+	
+	onUnload = "";
+	
+	class controls
+	{
+		class ER32_Garage_Background: RscText
+		{
+			idc = 1000;
+			x = 0.29375 * safezoneW + safezoneX;
+			y = 0.225 * safezoneH + safezoneY;
+			w = 0.4125 * safezoneW;
+			h = 0.55 * safezoneH;
+			colorBackground[] = {-1,-1,-1,0.4};
+		};
+		class ER32_Garage_PreviewWindow: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,512,512,1)r2t(ER32_pip,1)";
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.269 * safezoneH + safezoneY;
+			w = 0.273281 * safezoneW;
+			h = 0.396 * safezoneH;
+		};
+		class ER32_Garage_ControlGroup_Background: RscText
+		{
+			idc = 1001;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.528 * safezoneH;
+			colorBackground[] = {-1,-1,-1,0.4};
+		};
+		class ER32_Garage_Slider_Background: RscText
+		{
+			idc = 1002;
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.687 * safezoneH + safezoneY;
+			w = 0.273281 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorBackground[] = {-1,-1,-1,0.4};
+		};
+		class ER32_VehicleSpawner_Slider_Preview: RscSlider
+		{
+			idc = 1900;
+			onSliderPosChanged = "call ER32_fnc_vehicleSpawner_previewSlider";
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.687 * safezoneH + safezoneY;
+			w = 0.273281 * safezoneW;
+			h = 0.033 * safezoneH;
+			colorBackground[] = {0,0,0,0.4};
+		};
+		class ER32_Garage_ControlGroup: RscControlsGroup
+		{
+			idc = 2300;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.528 * safezoneH;
+			class VScrollBar
+			{
+				width = 0.021;
+				autoScrollEnable = 1;
+			};
+			class HScrollBar
+			{
+				height = 0;
+			};
+		};
+		class ER32_Garage_Button_Textures: RscButton
+		{
+			idc = 1600;
+			style = ST_PICTURE;
+			action = "[0] call ER32_fnc_garage_buildFeatureList;";
+			text = "\a3\ui_f\data\gui\rsc\rscdisplaygarage\texturesources_ca.paa";
+			x = 0.247344 * safezoneW + safezoneX;
+			y = 0.247 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.055 * safezoneH;
+		};
+		class ER32_Garage_Button_Attachments: RscButton
+		{
+			idc = 1601;
+			style = ST_PICTURE;
+			action = "[1] call ER32_fnc_garage_buildFeatureList;";
+			text = "\a3\ui_f\data\gui\rsc\rscdisplaygarage\animationsources_ca.paa";
+			x = 0.247344 * safezoneW + safezoneX;
+			y = 0.313 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.055 * safezoneH;
+		};
+		class ER32_Garager_Button_Pylons: RscButton
+		{
+			idc = 1602;
+			style = ST_PICTURE;
+			action = "[2] call ER32_fnc_garage_buildFeatureList;";
+			text = "\a3\ui_f\data\igui\cfg\vehicletoggles\vehiclecargoiconon2_ca.paa";
+			x = 0.247344 * safezoneW + safezoneX;
+			y = 0.379 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.055 * safezoneH;
+		};
+		class ER32_Garage_cancel: RscButton
+		{
+			idc = 1603;
+			text = "X"; //--- ToDo: Localize;
+			action = "closeDialog 2";
+			x = 0.695937 * safezoneW + safezoneX;
+			y = 0.225 * safezoneH + safezoneY;
+			w = 0.0103125 * safezoneW;
+			h = 0.022 * safezoneH;
+			colorBackground[] = {1,-1,-1,1};
+		};
+		class ER32_Garage_Button_Confirm: RscButton
+		{
+			idc = 1604;
+			text = "Confirm"; //--- ToDo: Localize;
+			action = "closeDialog 2";
+			x = 0.665 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.055 * safezoneH;
+			colorBackground[] = {-1,1,-1,1};
+		};
+		class ER32_Garage_Frame_Confirm: RscFrame
+		{
+			idc = 1800;
+			x = 0.665 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.055 * safezoneH;
+		};		
+	};
+};
